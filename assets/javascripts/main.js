@@ -29,14 +29,18 @@ class Wagon {
     }
   }
   shouldQuarantine() {
-    let traveler = new Traveler();
-    if (traveler.isHealthy === false) {
-      return false;
-    } else {
-      return true;
+    for (let i = 0; i < this.passengers.length; i++) {
+      if (this.passengers[i].isHealthy === false) {
+        return true;
+      }
     }
+    return false;
   }
   totalFood() {
-    return this.passengers[0].food;
+    let total = 0;
+    for (let i = 0; i < this.passengers.length; i++) {
+      total += this.passengers[i].food;
+    }
+    return total;
   }
 }
